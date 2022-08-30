@@ -51,7 +51,7 @@ module.exports = new (class extends controller {
       });
     }
 
-    const token = jwt.sign({_id: user.id}, config.get("jwt_key"));
+    const token = jwt.sign({_id: user.id}, process.env.JWT_KEY);
     this.response({
       res,
       message: 'successfuly logged in',

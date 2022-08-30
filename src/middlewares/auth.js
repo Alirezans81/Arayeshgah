@@ -7,7 +7,7 @@ async function isLoggined(req, res, next) {
 
   if (!token) res.status(401).send('access denied');
   try {
-    const decoded = jwt.verify(token, config.get('jwt_key'));
+    const decoded = jwt.verify(token, process.env.JWT_KEY);
     const user = await User.findById(decoded.id);
     console.log(user);
     req.user = user;
