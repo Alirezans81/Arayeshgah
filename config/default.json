@@ -1,6 +1,6 @@
 {
-  "name": "auth project",
+  "name": "arashgah",
   "db": {
-    "address": "mongodb://localhost:27017/arayeshgah"
+    "address": "mongodb://localhost:27017/arashgah"
   }
 }

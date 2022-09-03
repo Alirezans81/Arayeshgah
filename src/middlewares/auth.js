@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Barber = require("../models/barber");
 
 async function isLoggined(req, res, next) {
   const token = req.header("x-auth-token");
@@ -8,7 +9,9 @@ async function isLoggined(req, res, next) {
   else {
     try {
       const decoded = jwt.verify(token, process.env.JWT_KEY);
-      const user = await User.findById(decoded.id);
+      const user =
+        (await User.findById(decoded.id)) ||
+        (await Barber.findById(decoded.id));
       console.log(user);
       req.user = user;
       next();
