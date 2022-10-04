@@ -1,13 +1,13 @@
 const autoBind = require("auto-bind");
 const { validationResult } = require("express-validator");
 const User = require("../models/user");
-const Barber = require("../models/barber");
+const Barbershop = require("../models/barbershop");
 
 module.exports = class {
   constructor() {
     autoBind(this);
     this.User = User;
-    this.Barber = Barber;
+    this.Barbershop = Barbershop;
   }
 
   validationBody(req, res) {
@@ -38,5 +38,9 @@ module.exports = class {
       message,
       data,
     });
+  }
+
+  getVarifactionCode(phone) {
+    return 123456;
   }
 };
